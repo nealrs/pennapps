@@ -14,10 +14,13 @@
 <body>
   <div class="container">
     <div id="header">
-      <h2 id="hackathon">PennApps XII Expo</h2>
+      <!--<h2 id="hackathon">PennApps XII Expo</h2>-->
+
+      <a href="http://pennappsxii.devpost.com"><img src="img/logo.png" alt="PennApps XII Expo"></a>
+
       <input id="fullTableFilter" type="text" placeholder="Filter by sponsor prize or project name or whatever"></input>
 
-    <table>
+    <!--<table>
       <thead>
         <tr>
           <th class="number">Expo</th>
@@ -27,7 +30,7 @@
           <th class="prize">Track</th>
         </tr>
       </thead>
-    </table>
+    </table>-->
 
     </div>
 
@@ -37,6 +40,15 @@
 
 <script id="fullTable_template" type="text/html">
   <table>
+    <thead>
+      <tr>
+        <th class="number">Expo</th>
+        <th class="number">Table</th>
+        <th class="name">Project</th>
+        <th class="prize">Sponsors</th>
+        <th class="prize">Track</th>
+      </tr>
+    </thead>
     <tbody>
       {{#rows}}
         <tr>
@@ -50,6 +62,8 @@
     </tobdy>
   </table>
 </script>
+<br>
+<a href="http://devpost.com"><img src="//devpost0.assetspost.com/assets/shared/devpost_logo-646bdf6ac6663230947a952f8d354cad.svg" style="height: 40px;"></a>
 
 <script type="text/javascript">
 

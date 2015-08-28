@@ -5,9 +5,13 @@ h1 {font-size: 36px;}
 
 table {
   border-spacing: 0; width: 100%;
+  background-color: #FFF;
 }
 
-tbody tr:nth-child(odd) {background-color: #f3f3f3;}
+tbody tr:nth-child(odd) {
+  background-color: #efefef;
+
+}
 
 th, td {
   text-align: left;
@@ -45,8 +49,10 @@ ul li {padding-bottom: 6px; line-height: 22px;}
 body {
   font-family: sans-serif;
   font-size: 16px;
-  background: #fff;
+
   color: #062946;
+  background-color:#efefef;
+
   margin: 0;
   padding: 0;
   overflow: auto;
@@ -88,13 +94,12 @@ input {
 }
 
 #header {
-  position:fixed;
-  top:0px;
   width:800px;
-  background-color:#FFF;
+  background-color:#efefef;
+  color:#062946;
   z-index:999999;
-  box-shadow: 0px 9px 11px -8px rgba(0,0,0,0.5);
-  border-bottom: 1px solid #ddd;
+  /*box-shadow: 0px 9px 11px -8px rgba(0,0,0,0.5);
+  border-bottom: 1px solid #ddd;*/
 }
 
 #hackathon {
@@ -102,7 +107,6 @@ input {
 }
 
 #fullTable {
-  margin-top: 11rem;
 }
 
 
