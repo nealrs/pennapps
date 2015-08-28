@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <title>PennApps XII Expo</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'/>
+    <script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js'></script>
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,900,400italic' rel='stylesheet' type='text/css'>
+    <link rel="shortcut icon" href="favicon.png">
+    <script type='text/javascript' src='js/tabletop1.3.4.js'></script>
+    <script type='text/javascript' src='js/sheetsee.js'></script>
+    <link rel='stylesheet' type='text/css' href='css/style.css'>
+  </head>
+<body>
+  <div class="container">
+    <div id="header">
+      <h2 id="hackathon">PennApps XII Expo</h2>
+      <input id="fullTableFilter" type="text" placeholder="Filter by sponsor prize or project name or whatever"></input>
+
+    <table>
+      <thead>
+        <tr>
+          <th class="number">Expo</th>
+          <th class="number">Table</th>
+          <th class="name">Project</th>
+          <th class="prize">Sponsors</th>
+          <th class="prize">Track</th>
+        </tr>
+      </thead>
+    </table>
+
+    </div>
+
+
+    <div id="fullTable"></div>
+</div>
+
+<script id="fullTable_template" type="text/html">
+  <table>
+    <tbody>
+      {{#rows}}
+        <tr>
+          <td class="number">{{exponum}}</td>
+          <td class="number">{{tablenum}}</td>
+          <td class="name"><a href="{{projectlink}}">{{projectname}}</a></td>
+          <td class="prize">{{sponsorprizes}}</td>
+          <td class="prize">{{track}}</td>
+        </tr>
+      {{/rows}}
+    </tobdy>
+  </table>
+</script>
+
+<script type="text/javascript">
+
+  function getParam(variable){
+    var query = window.location.search.substring(1);
+    var vars = query.split("&");
+    for (var i=0;i<vars.length;i++) {
+      var pair = vars[i].split("=");
+      if(pair[0] == variable){return pair[1];}
+    }
+    return(false);
+  }
+
+
+  document.addEventListener('DOMContentLoaded', function() {
+    // usage: http://foo.bar?id=1kaNq96j0S76A2P_dk82VekiruiWEQXTu5hT0POPywe4&name=Hackathon%20Name&filter=hardware
+
+    //var URL = getParam("id");
+    var URL = '18f3ua-C9nP0-a6oOCL5900rgpUS_K-3-jHKFkgia-6Q';
+    //var name = decodeURI(getParam("name"));
+    var filter = decodeURI(getParam("filter"));
+
+    if (URL == false){alert("invalid sheet id!");}
+    /*if (name != "false"){
+    	document.title = name+" Expo";
+    	$("#hackathon").text(name+" Expo");
+    }*/
+
+    if (filter != "false"){
+      $("#fullTableFilter").val(filter);
+    };
+
+    Tabletop.init( { key: URL, callback: showInfo, simpleSheet: true } );
+  });
+
+  function showInfo(data) {
+    // put spaces after commas for better wrapping / mobile.
+    for (var x in data) {
+      var s = data[x]['sponsorprizes'];
+      data[x]['sponsorprizes'] = s.replace(/,/ig, ", ");
+    }
+
+    var tableOptions = {"data": data
+    , "pagination": 1000, "tableDiv": "#fullTable", "filterDiv": "#fullTableFilter"}
+    Sheetsee.makeTable(tableOptions)
+    Sheetsee.initiateTableFilter(tableOptions)
+    Sheetsee.searchTable(tableOptions, $("#fullTableFilter").val())
+  }
+
+</script>
+</body>
+</html>
