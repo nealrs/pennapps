@@ -65,19 +65,19 @@
 
 
   document.addEventListener('DOMContentLoaded', function() {
-    // usage: http://foo.bar?id=1kaNq96j0S76A2P_dk82VekiruiWEQXTu5hT0POPywe4&name=Hackathon%20Name&filter=hardware
 
-    //var URL = getParam("id");
+    /*********************************************************
+
+    SPREADSHEET YOU NEED TO GET ACCESS TO & FILL OUT:
+    https://docs.google.com/spreadsheets/d/18f3ua-C9nP0-a6oOCL5900rgpUS_K-3-jHKFkgia-6Q/edit#gid=0
+
+    USAGE: http://nealrs.github.io/pennappsExpo/?filter=foobar
+
+    *********************************************************/
+
     var URL = '18f3ua-C9nP0-a6oOCL5900rgpUS_K-3-jHKFkgia-6Q';
-    //var name = decodeURI(getParam("name"));
     var filter = decodeURI(getParam("filter"));
-
     if (URL == false){alert("invalid sheet id!");}
-    /*if (name != "false"){
-    	document.title = name+" Expo";
-    	$("#hackathon").text(name+" Expo");
-    }*/
-
     if (filter != "false"){
       $("#fullTableFilter").val(filter);
     };
@@ -91,6 +91,8 @@
       var s = data[x]['sponsorprizes'];
       data[x]['sponsorprizes'] = s.replace(/,/ig, ", ");
     }
+
+    //console.log(data);
 
     var tableOptions = {"data": data
     , "pagination": 1000, "tableDiv": "#fullTable", "filterDiv": "#fullTableFilter"}
