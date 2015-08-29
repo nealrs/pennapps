@@ -6,7 +6,7 @@
     <meta name='viewport' content='width=device-width, initial-scale=1.0'/>
     <script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js'></script>
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,900,400italic' rel='stylesheet' type='text/css'>
-    <link rel="shortcut icon" href="favicon.png">
+    <link rel="shortcut icon" href="http://2015f.pennapps.com/img/favicon.png">
     <script type='text/javascript' src='js/tabletop1.3.4.js'></script>
     <script type='text/javascript' src='js/sheetsee.js'></script>
     <link rel='stylesheet' type='text/css' href='css/style.css'>
@@ -19,19 +19,6 @@
       <a href="http://pennappsxii.devpost.com"><img src="img/logo.png" alt="PennApps XII Expo"></a>
 
       <input id="fullTableFilter" type="text" placeholder="Filter by sponsor prize or project name or whatever"></input>
-
-    <!--<table>
-      <thead>
-        <tr>
-          <th class="number">Expo</th>
-          <th class="number">Table</th>
-          <th class="name">Project</th>
-          <th class="prize">Sponsors</th>
-          <th class="prize">Track</th>
-        </tr>
-      </thead>
-    </table>-->
-
     </div>
 
 
@@ -46,7 +33,8 @@
         <th class="number">Table</th>
         <th class="name">Project</th>
         <th class="prize">Sponsors</th>
-        <th class="prize">Track</th>
+        <th class="prize">Routes</th>
+        <th class="prize">Misc</th>
       </tr>
     </thead>
     <tbody>
@@ -56,7 +44,8 @@
           <td class="number">{{tablenum}}</td>
           <td class="name"><a href="{{projectlink}}">{{projectname}}</a></td>
           <td class="prize">{{sponsorprizes}}</td>
-          <td class="prize">{{track}}</td>
+          <td class="prize">{{route}}</td>
+          <td class="prize">{{special}}</td>
         </tr>
       {{/rows}}
     </tobdy>
@@ -104,9 +93,20 @@
     for (var x in data) {
       var s = data[x]['sponsorprizes'];
       data[x]['sponsorprizes'] = s.replace(/,/ig, ", ");
+
+      /*var hehw = data[x]['healthhardware'];
+
+      if (hehw == "hardware") {
+        data[x]['healthhardware'] = "HARDWARE";
+      }
+      else if (hehw == "health") {
+        data[x]['healthhardware'] = "HEALTH";
+      }*/
+
+
     }
 
-    //console.log(data);
+    console.log(data);
 
     var tableOptions = {"data": data
     , "pagination": 1000, "tableDiv": "#fullTable", "filterDiv": "#fullTableFilter"}
